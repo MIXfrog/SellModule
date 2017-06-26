@@ -1,0 +1,17 @@
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CustomerType)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("CustomerType",
+                  new SelectList
+                  (new[]
+                  {
+                      new KeyValuePair<string, string>("‘изическое лицо", "‘изическое лицо"),
+                      new KeyValuePair<string, string>("ёридическое лицо", "ёридическое лицо")
+                  }, 
+                  "Value", 
+                  "Key",
+                  new { @onchange = "this.form.submit();" }))
+
+                        @Html.ValidationMessageFor(model => model.CustomerType)
+                    </div>

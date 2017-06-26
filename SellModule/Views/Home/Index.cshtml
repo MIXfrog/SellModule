@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Добро пожаловать в сервис продаж!</h1>
+    <p><a  class="btn btn-primary btn-lg">Событие! &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Составить договор</h2>
+        <p>Составляем договор по формам, созраняем его в бд</p>
+        <p>@Html.ActionLink("Создать контракт", "CreateContract", "Contract")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>График продаж</h2>
+        <p>Выводим статистику о продажах.</p>
+        <p><p>@Html.ActionLink("Просмотр статистики", "ViewStatistic", "Statistic")</p></p>
+    </div>
+</div>

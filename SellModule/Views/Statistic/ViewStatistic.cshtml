@@ -1,0 +1,15 @@
+﻿@{ 
+    ViewBag.Title = "Просмотр статистики";
+}
+
+<h2>График продаж</h2>
+<div>
+    <img src="@Url.Action("SellColumns")" alt="Chart"/>
+</div>
+
+<div>
+    <img src="@Url.Action("SellPie")" alt="Chart" />
+</div>
+<div>
+    <p>@Html.ActionLink("Вернуться на главную", "Index", "Home")</p>
+</div>

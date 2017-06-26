@@ -1,0 +1,125 @@
+﻿@model SellModule.Models.Contract
+
+@{
+    ViewBag.Title = "Add Contract";
+}
+
+<div class="jumbotron">
+    <h1>Введите параметры договора</h1>
+</div>
+<form action="/Contract/CreateContract" method="post">
+
+    <div class="row">
+        <div class="col-md-4">
+            <fieldset>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ProductType)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("ProductType",
+                  new SelectList
+                  (new[]
+                  {
+                      new KeyValuePair<string, string>("КАСКО", "КАСКО"),
+                      new KeyValuePair<string, string>("ОСАГО", "ОСАГО"),
+                      new KeyValuePair<string, string>("Недвижимость", "Недвижимость")
+                  }
+                    , "Value", "Key"))
+
+                    @Html.ValidationMessageFor(model => model.ProductType)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Price)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1.00", @value = "0" } })
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Date)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Date)
+                    @Html.ValidationMessageFor(model => model.Date)
+                </div>
+                <p>
+                    <input type="submit" value="Продать" />
+                </p>
+            </fieldset>
+        </div>
+
+        <div class="col-md-4">
+            <fieldset>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CustomerType)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("CustomerType",
+                  new SelectList
+                  (new[]
+                  {
+                      new KeyValuePair<string, string>("Физическое лицо", "Физическое лицо"),
+                      new KeyValuePair<string, string>("Юридическое лицо", "Юридическое лицо")
+                  },
+                  "Value",
+                  "Key",
+                  new { @class = "form-control", @onchange = "FillCustomers" }))
+                    @Html.ValidationMessageFor(model => model.CustomerType)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CustomerName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(m => m.CustomerName)
+
+
+                    @Html.ValidationMessageFor(model => model.CustomerName)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.BankNumber)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.BankNumber)
+                    @Html.ValidationMessageFor(model => model.BankNumber)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Adress)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Adress)
+                    @Html.ValidationMessageFor(model => model.Adress)
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>
+
+
+
+@section Scripts {
+    <script>
+        function FillCustomers() {
+    var customerId = $('#Customer').val();
+    $.ajax({
+        url: '/Employees/FillCustomers',
+        type: "GET",
+        dataType: "JSON",
+        data: { Customer: customerId},
+        success: function (customers) {
+            $("#Customer").html(""); // clear before appending new list
+            $.each(customers, function (i, customer) {
+                $("#Customer").append(
+                    $('<option></option>').val(customer.customerId).html(customer.CustomerName));
+            });
+        }
+    });
+  }
+    </script>
+}
