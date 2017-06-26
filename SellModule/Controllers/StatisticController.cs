@@ -45,7 +45,7 @@ namespace SellModule.Controllers
             var result = (from c in db.Contracts select c);
 
             result.ToList().ForEach(rs => xValue.Add(rs.Price));
-            result.ToList().ForEach(rs => yValue.Add(rs.ProductType.Count()));
+            result.ToList().ForEach(rs => yValue.Add(rs.ProductId.Count()));
 
             new Chart(width: 600, height: 400, theme: ChartTheme.Green)
                 .AddTitle("Круговая диаграмма")

@@ -58,11 +58,5 @@ namespace SellModule.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-        public ActionResult FillCustomers(string customerType)
-        {
-            var customers = db.Contracts.Where(c => c.CustomerType == customerType);
-            return Json(customers, JsonRequestBehavior.AllowGet);
-        }
     }
 }
