@@ -13,35 +13,20 @@ namespace SellModule.Controllers
 
         public ActionResult CreateContract()
         {
-            //Get the value from database and then set it to ViewBag to pass it View
-            IEnumerable<SelectListItem> items =
-                db.Contracts.Select(c => new SelectListItem
-                {
-                    Value = c.CustomerName,
-                    Text = c.CustomerName
-
-                }
-                ).Distinct();
-
-            ViewBag.CustomerList = items;
-
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateContract
-            (string CustomerName, string ProductType, decimal Price,
-            DateTime Date, string CustomerType, int BankNumber, string Adress)
+            (string ProductId, decimal Price,
+            DateTime Date, int CustomerId)
         {
             Contract contract = new Contract
             {
-                CustomerName = CustomerName,
-                ProductType = ProductType,
+                ProductId = ProductId,
                 Price = Price,
                 Date = Date,
-                CustomerType = CustomerType,
-                BankNumber = BankNumber,
-                Adress = Adress,
+                CustomerId = CustomerId,
                 Status = "Sold"
             };
 

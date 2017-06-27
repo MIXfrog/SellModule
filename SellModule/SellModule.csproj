@@ -148,6 +148,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
+    <Compile Include="Migrations\201706241224293_InitialCreate.cs" />
+    <Compile Include="Migrations\201706241224293_InitialCreate.Designer.cs">
+      <DependentUpon>201706241224293_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706271518122_MigrateDB.cs" />
+    <Compile Include="Migrations\201706271518122_MigrateDB.Designer.cs">
+      <DependentUpon>201706271518122_MigrateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\ContractContext.cs" />
     <Compile Include="Controllers\ContractController.cs" />
@@ -211,6 +220,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706241224293_InitialCreate.resx">
+      <DependentUpon>201706241224293_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706271518122_MigrateDB.resx">
+      <DependentUpon>201706271518122_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

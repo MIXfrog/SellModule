@@ -68,3 +68,6 @@ C:\Users\Администратор\Desktop\SellModule\SellModule\bin\Microsoft.
 C:\Users\Администратор\Desktop\SellModule\SellModule\bin\Microsoft.AI.Web.xml
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.dll
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.pdb
+C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.InitialCreate.resources
+C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.csproj.GenerateResource.Cache
+C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB.resources

@@ -21,7 +21,7 @@ namespace SellModule.Models
         [Display(Name = "Статус договора")]
         public string Status { get; set; }
 
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
     }
 
     public class Customer
