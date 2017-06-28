@@ -8,7 +8,7 @@ namespace SellModule.Models
         [Key]
         public int Id { get; set; }
         
-        public string ProductId { get; set; }
+        public int ProductId { get; set; }
 
         [Display(Name = "Цена")]
         [DataType(DataType.Currency)]
@@ -29,7 +29,7 @@ namespace SellModule.Models
         [Key]
         public int CustomerId { get; set; }
         
-        public string CustomerTypeId { get; set; }
+        public int CustomerTypeId { get; set; }
 
         [Display(Name = "Имя страхователя")]
         public string CustomerName { get; set; }

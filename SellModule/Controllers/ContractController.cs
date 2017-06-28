@@ -13,12 +13,13 @@ namespace SellModule.Controllers
 
         public ActionResult CreateContract()
         {
+            // Необходимо закинуть данные о клиентах
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateContract
-            (string ProductId, decimal Price,
+            (int ProductId, decimal Price,
             DateTime Date, int CustomerId)
         {
             Contract contract = new Contract
