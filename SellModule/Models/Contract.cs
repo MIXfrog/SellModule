@@ -18,10 +18,11 @@ namespace SellModule.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-        [Display(Name = "Статус договора")]
-        public string Status { get; set; }
+        public int ContractStatusId { get; set; }
 
         public int CustomerId { get; set; }
+
+        public int VendorId { get; set; }
     }
 
     public class Customer
@@ -57,5 +58,41 @@ namespace SellModule.Models
         
         [Display(Name = "Тип страхователя")]
         public string CustomerTypeName { get; set; }
+    }
+
+    public class Vendor
+    {
+        [Key]
+        public int VendorId { get; set; }
+
+        public string VendorLogin { get; set; }
+
+        public string VendorPassword { get; set; }
+
+        [Display(Name = "Имя продавца")]
+        public string VendorName { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        public string VendorEmail { get; set; }
+
+        public int VendorRoleId { get; set; }
+    }
+
+    public class VendorRole
+    {
+        [Key]
+        public int VendorRoleId { get; set; }
+
+        [Display(Name = "Должность продавца")]
+        public string VendorRoleName { get; set; }
+    }
+
+    public class ContractStatus
+    {
+        [Key]
+        public int ContractStatusId { get; set; }
+        
+        [Display(Name = "Статус договора")]
+        public string ContractStatusName { get; set; }
     }
 }

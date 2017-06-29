@@ -71,3 +71,5 @@ C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\Sell
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.InitialCreate.resources
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.csproj.GenerateResource.Cache
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB.resources
+C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB_02.resources
+C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB_021.resources

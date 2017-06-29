@@ -156,6 +156,14 @@
     <Compile Include="Migrations\201706271518122_MigrateDB.Designer.cs">
       <DependentUpon>201706271518122_MigrateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706291215054_MigrateDB_02.cs" />
+    <Compile Include="Migrations\201706291215054_MigrateDB_02.Designer.cs">
+      <DependentUpon>201706291215054_MigrateDB_02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706291218497_MigrateDB_021.cs" />
+    <Compile Include="Migrations\201706291218497_MigrateDB_021.Designer.cs">
+      <DependentUpon>201706291218497_MigrateDB_021.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\ContractContext.cs" />
@@ -227,6 +235,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706271518122_MigrateDB.resx">
       <DependentUpon>201706271518122_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706291215054_MigrateDB_02.resx">
+      <DependentUpon>201706291215054_MigrateDB_02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706291218497_MigrateDB_021.resx">
+      <DependentUpon>201706291218497_MigrateDB_021.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

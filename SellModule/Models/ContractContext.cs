@@ -12,5 +12,11 @@ namespace SellModule.Models
         public DbSet<ProductType> ProductTypes { get; set; }
 
         public DbSet<CustomerType> CustomerTypes { get; set; }
+
+        public DbSet<Vendor> Vendors { get; set; }
+
+        public DbSet<VendorRole> VendorRoles { get; set; }
+
+        public DbSet<ContractStatus> ContractStatus { get; set; }
     }
 }

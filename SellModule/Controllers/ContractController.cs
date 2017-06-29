@@ -28,7 +28,8 @@ namespace SellModule.Controllers
                 Price = Price,
                 Date = Date,
                 CustomerId = CustomerId,
-                Status = "Sold"
+                ContractStatusId = 1,
+                VendorId = 1
             };
 
             try
