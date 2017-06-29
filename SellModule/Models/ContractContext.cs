@@ -18,5 +18,9 @@ namespace SellModule.Models
         public DbSet<VendorRole> VendorRoles { get; set; }
 
         public DbSet<ContractStatus> ContractStatus { get; set; }
+
+        public DbSet<Vehicle> Vvehices { get; set; }
+
+        public DbSet<VehicleClass> VehicleClasses { get; set; }
     }
 }

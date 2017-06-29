@@ -39,7 +39,7 @@ namespace SellModule.Models
         public int BankNumber { get; set; }
         
         [Display(Name = "Адрес страхователя")]
-        public string Adress { get; set; }
+        public string Address { get; set; }
     }
 
     public class ProductType
@@ -49,6 +49,8 @@ namespace SellModule.Models
 
         [Display(Name = "Тип продукта")]
         public string ProductName { get; set; }
+
+        public int VIN { get; set; }
     }
 
     public class CustomerType
@@ -65,15 +67,15 @@ namespace SellModule.Models
         [Key]
         public int VendorId { get; set; }
 
-        public string VendorLogin { get; set; }
+        public string Login { get; set; }
 
-        public string VendorPassword { get; set; }
+        public string Password { get; set; }
 
         [Display(Name = "Имя продавца")]
         public string VendorName { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        public string VendorEmail { get; set; }
+        public string Email { get; set; }
 
         public int VendorRoleId { get; set; }
     }
@@ -94,5 +96,28 @@ namespace SellModule.Models
         
         [Display(Name = "Статус договора")]
         public string ContractStatusName { get; set; }
+    }
+
+    public class Vehicle
+    {
+        [Key]
+        public int VIN { get; set; }
+
+        public string ModelCode { get; set; } 
+
+        public int VehicleClassId { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime YearMade { get; set; }
+
+        public string VehicleDetails { get; set; }
+    }
+
+    public class VehicleClass
+    {
+        [Key]
+        public int VehicleClassId { get; set; }
+
+        public string VehicleClassName { get; set; }
     }
 }
