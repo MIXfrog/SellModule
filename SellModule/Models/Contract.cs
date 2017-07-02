@@ -11,7 +11,7 @@ namespace SellModule.Models
         
         public int ProductId { get; set; }
 
-        [Display(Name = "Цена")]
+        [Display(Name = "Цена договора")]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 

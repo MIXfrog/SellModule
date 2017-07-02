@@ -13,21 +13,39 @@ namespace SellModule.Controllers
 
         public ActionResult CreateContract()
         {
-            // Необходимо закинуть данные о клиентах, статусах продукта
+            // Необходимо закинуть данные о клиентах, статусах продукта. Создаем список
+            IEnumerable<SelectListItem> selectCustomerTypeList =
+                from s in db.CustomerTypes // where ever you get this from, database etc.
+                            select new SelectListItem
+                            {
+                                Text = s.CustomerTypeName,
+                                Value = s.CustomerTypeId.ToString()
+                            };
+            ViewBag.ClientTypes = selectCustomerTypeList;
+
+            IEnumerable<SelectListItem> selectProductTypeList =
+                from s in db.ProductTypes // where ever you get this from, database etc.
+                            select new SelectListItem
+                            {
+                                Text = s.ProductName,
+                                Value = s.ProductId.ToString()
+                            };
+            ViewBag.ProductTypes = selectProductTypeList;
+
             return View();
         }
 
         [HttpPost]
         public ActionResult CreateContract
-            (int ProductId, decimal Price,
-            DateTime Date, int CustomerId)
+            (string ProductId, decimal Price,
+            DateTime Date, string CustomerId)
         {
             Contract contract = new Contract
             {
-                ProductId = ProductId,
+                ProductId = Convert.ToInt32(ProductId),
                 Price = Price,
                 Date = Date,
-                CustomerId = CustomerId,
+                CustomerId = Convert.ToInt32(CustomerId),
                 ContractStatusId = 1,
                 VendorId = 1
             };
@@ -44,6 +62,32 @@ namespace SellModule.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult GetCustomersByCustomerTypeId(string CustomerTypeId)
+        {
+            int customerTypeId = Convert.ToInt32(CustomerTypeId);
+            List<Customer> objContract = new List<Customer>();
+
+            // ПОЛУЧАЕМ СПИСОК КЛИЕНТОВ ПО CustomerTypeId
+            objContract = db.Customers.ToList().Where(m => m.CustomerTypeId == customerTypeId).ToList();
+
+            SelectList obgContract = new SelectList(objContract, "CustomerId", "CustomerName", 0);
+            return Json(obgContract);
+        }
+
+        [HttpPost]
+        public ActionResult GetAdressByCustomerId(string CustomerId)
+        {
+            int customerId = Convert.ToInt32(CustomerId);
+            List<Customer> objContract = new List<Customer>();
+
+            // ПОЛУЧАЕМ СПИСОК КЛИЕНТОВ ПО CustomerTypeId
+            objContract = db.Customers.ToList().Where(m => m.CustomerId == customerId).ToList();
+
+            SelectList obgContract = new SelectList(objContract, "CustomerId", "CustomerName", 0);
+            return Json(obgContract);
         }
     }
 }

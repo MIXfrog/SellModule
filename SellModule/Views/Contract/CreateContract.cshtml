@@ -14,11 +14,12 @@
             <fieldset>
 
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.ProductId)
+                    @Html.Label("Тип продукта")
                 </div>
                 <div class="editor-field">
                     <!--Дроплист для типа продукта(Каско, Осаго) выбираем имя, передаем Id-->
-                    @Html.EditorFor(model => model.ProductId)
+                    @Html.DropDownList("ProductId", new SelectList(ViewBag.ProductTypes, "Value", "Text"))
+                   @Html.ValidationMessageFor(model => model.ProductId)
                 </div>
 
                 <div class="editor-label">
@@ -46,46 +47,36 @@
             <fieldset>
 
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.CustomerType)
+                    @Html.Label("Тип клиента")
                 </div>
                 <div class="editor-field">
-                    @Html.DropDownList("CustomerType",
-                  new SelectList
-                  (new[]
-                  {
-                      new KeyValuePair<string, string>("Физическое лицо", "Физическое лицо"),
-                      new KeyValuePair<string, string>("Юридическое лицо", "Юридическое лицо")
-                  },
-                  "Value",
-                  "Key",
-                  new { @class = "form-control", @onchange = "FillCustomers" }))
+                    @Html.DropDownListFor(m => m.CustomerType, new SelectList(ViewBag.ClientTypes, "Value", "Text"), new { @id = "ddlClientType", @style = "width:200px;", @onchange = "javascript:GetCustomers(this.value);" })
                     @Html.ValidationMessageFor(model => model.CustomerType)
                 </div>
 
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.CustomerName)
+                 @Html.Label("Имя клиента")
+             </div>
+             <div class="editor-field">
+                 <select id="ddlCustomerId" name="CustomerId" ></select>
+                 @Html.ValidationMessageFor(model => model.Customer)
+             </div>
+                
+                
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Customer.BankNumber)
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(m => m.CustomerName)
-
-
-                    @Html.ValidationMessageFor(model => model.CustomerName)
+                    @Html.EditorFor(model => model.Customer.BankNumber)
+                    @Html.ValidationMessageFor(model => model.Customer.BankNumber)
                 </div>
 
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.BankNumber)
+                    @Html.LabelFor(model => model.Customer.Address)
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(model => model.BankNumber)
-                    @Html.ValidationMessageFor(model => model.BankNumber)
-                </div>
-
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Adress)
-                </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Adress)
-                    @Html.ValidationMessageFor(model => model.Adress)
+                    @Html.EditorFor(model => model.Customer.Address)
+                    @Html.ValidationMessageFor(model => model.Customer.Address)
                 </div>
             </fieldset>
         </div>
@@ -94,23 +85,46 @@
 
 
 
-@section Scripts {
-    <script>
-        function FillCustomers() {
-    var customerId = $('#Customer').val();
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+
+    function GetCustomers(_customerTypeId) {
+        var procemessage = "<option value='0'>Запрос обрабатывается</option>";
+        $("#ddlCustomerId").html(procemessage).show();
+        var url = '@Url.Action("GetCustomersByCustomerTypeId", "Contract")';
+
+        $.ajax({
+            url: url,
+            data: { customerTypeId: _customerTypeId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>Выберите клиента</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlCustomerId").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
+    function Action(code) {
     $.ajax({
-        url: '/Employees/FillCustomers',
-        type: "GET",
-        dataType: "JSON",
-        data: { Customer: customerId},
-        success: function (customers) {
-            $("#Customer").html(""); // clear before appending new list
-            $.each(customers, function (i, customer) {
-                $("#Customer").append(
-                    $('<option></option>').val(customer.customerId).html(customer.CustomerName));
-            });
+        url: '@Url.Action("Action", "Chains")',
+        type: "POST",
+        data: { "code": code },
+        "success": function (data) {
+            if (data != null) {
+                var vdata = data;
+                $("#ChainName").val(vdata[0].name);
+                $("#ChainCode").val(vdata[0].code);
+                $("#username").val(vdata[0].username);
+            }
         }
     });
-  }
-    </script>
 }
+</script>
