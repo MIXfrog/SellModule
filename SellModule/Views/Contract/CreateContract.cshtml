@@ -19,7 +19,7 @@
                 <div class="editor-field">
                     <!--Дроплист для типа продукта(Каско, Осаго) выбираем имя, передаем Id-->
                     @Html.DropDownList("ProductId", new SelectList(ViewBag.ProductTypes, "Value", "Text"))
-                   @Html.ValidationMessageFor(model => model.ProductId)
+                    @Html.ValidationMessageFor(model => model.ProductId)
                 </div>
 
                 <div class="editor-label">
@@ -37,6 +37,7 @@
                     @Html.EditorFor(model => model.Date)
                     @Html.ValidationMessageFor(model => model.Date)
                 </div>
+                <p></p>
                 <p>
                     <input type="submit" value="Продать" />
                 </p>
@@ -55,29 +56,17 @@
                 </div>
 
                 <div class="editor-label">
-                 @Html.Label("Имя клиента")
-             </div>
-             <div class="editor-field">
-                 <select id="ddlCustomerId" name="CustomerId" ></select>
-                 @Html.ValidationMessageFor(model => model.Customer)
-             </div>
-                
-                
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Customer.BankNumber)
+                    @Html.Label("Имя клиента")
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(model => model.Customer.BankNumber)
-                    @Html.ValidationMessageFor(model => model.Customer.BankNumber)
+                    <select id="ddlCustomerId" name="CustomerId" runat="server" AutoPostBack="True" OnSelectedIndexChanged="FillAddressAndBankNumber_OnClientNameChange"style=" width:50%;"></select>
+                    @Html.ValidationMessageFor(model => model.Customer)
                 </div>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p>@Html.ActionLink("Добавить клиента", "AddCustomer", "Customer")</p>
 
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Customer.Address)
-                </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Customer.Address)
-                    @Html.ValidationMessageFor(model => model.Customer.Address)
-                </div>
             </fieldset>
         </div>
     </div>
@@ -112,17 +101,16 @@
 
     }
 
-    function Action(code) {
+    function FillAddressAndBankNumber(_customerId) {
     $.ajax({
-        url: '@Url.Action("Action", "Chains")',
+        url: '@Url.Action("FillAddressAndBankNumber_OnClientNameChange", "Contract")',
         type: "POST",
-        data: { "code": code },
+        data: { "customerId": _customerId },
         "success": function (data) {
             if (data != null) {
                 var vdata = data;
-                $("#ChainName").val(vdata[0].name);
-                $("#ChainCode").val(vdata[0].code);
-                $("#username").val(vdata[0].username);
+                $("#BankNumber").val(vdata[0].BankNumber);
+                $("#Address").val(vdata[0].Address);
             }
         }
     });

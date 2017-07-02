@@ -1,0 +1,55 @@
+﻿@model SellModule.Models.Customer
+
+@{
+    ViewBag.Title = "AddCustomer";
+}
+
+<div class="jumbotron">
+    <h1>Заполните данные нового клиента</h1>
+</div>
+
+<form action="/Customer/AddCustomer" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <fieldset>
+
+                <div class="editor-label">
+                    @Html.Label("Тип клиента")
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("CustomerTypeId", new SelectList(ViewBag.CustomerTypes, "Value", "Text"))
+                    @Html.ValidationMessageFor(model => model.CustomerType)
+                </div>
+
+                <div class="editor-label">
+                    @Html.Label("Имя клиента")
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.CustomerName)
+                    @Html.ValidationMessageFor(model => model.CustomerName)
+                </div>
+
+                <div class="editor-label">
+                    @Html.Label("Номер банковского счета")
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.BankNumber)
+                    @Html.ValidationMessageFor(model => model.BankNumber)
+                </div>
+
+                <div class="editor-label">
+                    @Html.Label("Адрес клиента")
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Address)
+                    @Html.ValidationMessageFor(model => model.Address)
+                </div>
+                <p>
+                    <input type="submit" value="Добавить" />
+                </p>
+            </fieldset>
+
+        </div>
+
+    </div>
+</form>

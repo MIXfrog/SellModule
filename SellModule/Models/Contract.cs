@@ -41,6 +41,7 @@ namespace SellModule.Models
         [Display(Name = "Имя страхователя")]
         public string CustomerName { get; set; }
 
+        [DataType(DataType.CreditCard)]
         [Display(Name = "Номер банковского счета")]
         public int BankNumber { get; set; }
         

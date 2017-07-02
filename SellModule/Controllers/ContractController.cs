@@ -89,5 +89,17 @@ namespace SellModule.Controllers
             SelectList obgContract = new SelectList(objContract, "CustomerId", "CustomerName", 0);
             return Json(obgContract);
         }
+
+        [HttpPost]
+        public ActionResult FillAddressAndBankNumber_OnClientNameChange(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(sender);
+
+            var query = from c in db.Customers
+                        where c.CustomerId == id
+                        select c;
+
+            return Json(query);
+        }
     }
 }
