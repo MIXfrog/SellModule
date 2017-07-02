@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<SellModule.Models.Customer>
+
+@{
+    ViewBag.Title = "ViewCustomerList";
+}
+
+<h2>Список клиентов</h2>
+
+<table>
+    <tr>
+        <th></th>
+        <th>   </th>
+        <th>Тип клиента</th>
+        <th>Имя клиента</th>
+        <th>Номер банковского счета</th>
+        <th>Арес клиента</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.CustomerId }) |
+                @Html.ActionLink("Детали", "Details", new { id = item.CustomerId }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.CustomerId })
+            </td>
+            <td>   </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerType.CustomerTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+        </tr>
+    }
+
+</table>

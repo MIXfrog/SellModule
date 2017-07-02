@@ -75,3 +75,4 @@ C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\Sell
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB_021.resources
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB1.resources
 C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB2.resources
+C:\Users\Администратор\Desktop\SellModule\SellModule\obj\Debug\SellModule.Migrations.MigrateDB3.resources

@@ -46,6 +46,8 @@ namespace SellModule.Models
         
         [Display(Name = "Адрес страхователя")]
         public string Address { get; set; }
+
+        public virtual CustomerType CustomerType { get; set; }
     }
 
     public class ProductType
