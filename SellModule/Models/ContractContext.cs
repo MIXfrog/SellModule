@@ -19,7 +19,7 @@ namespace SellModule.Models
 
         public DbSet<ContractStatus> ContractStatus { get; set; }
 
-        public DbSet<Vehicle> Vvehices { get; set; }
+        public DbSet<Vehicle> Vehices { get; set; }
 
         public DbSet<VehicleClass> VehicleClasses { get; set; }
     }

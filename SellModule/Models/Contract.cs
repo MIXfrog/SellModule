@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SellModule.Models
@@ -23,6 +24,11 @@ namespace SellModule.Models
         public int CustomerId { get; set; }
 
         public int VendorId { get; set; }
+
+        public virtual Customer Customer { get; set; }
+        public virtual ProductType ProductType { get; set; }
+        public virtual CustomerType CustomerType { get; set; }
+        public virtual ContractStatus ContractStatus { get; set; }
     }
 
     public class Customer

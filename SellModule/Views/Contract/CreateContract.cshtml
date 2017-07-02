@@ -14,20 +14,11 @@
             <fieldset>
 
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.)
+                    @Html.LabelFor(model => model.ProductId)
                 </div>
                 <div class="editor-field">
-                    @Html.DropDownList("ProductType",
-                  new SelectList
-                  (new[]
-                  {
-                      new KeyValuePair<string, string>("КАСКО", "КАСКО"),
-                      new KeyValuePair<string, string>("ОСАГО", "ОСАГО"),
-                      new KeyValuePair<string, string>("Недвижимость", "Недвижимость")
-                  }
-                    , "Value", "Key"))
-
-                    @Html.ValidationMessageFor(model => model.ProductType)
+                    <!--Дроплист для типа продукта(Каско, Осаго) выбираем имя, передаем Id-->
+                    @Html.EditorFor(model => model.ProductId)
                 </div>
 
                 <div class="editor-label">

@@ -13,7 +13,7 @@ namespace SellModule.Controllers
 
         public ActionResult CreateContract()
         {
-            // Необходимо закинуть данные о клиентах
+            // Необходимо закинуть данные о клиентах, статусах продукта
             return View();
         }
 

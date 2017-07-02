@@ -9,15 +9,18 @@ namespace SellModule.Controllers
 {
     public class JournalController : Controller
     {
-        ContractContext db = new ContractContext();
+        private ContractContext db = new ContractContext();
 
         public ViewResult ViewJournal()
         {
-            return View(db.Contracts.ToList());
+            var model = db.Contracts.Include("Customer").Include("ProductType").ToList();
+            return View(model);
         }
 
-        public ViewResult Edit()
+        public ViewResult Edit(int id)
         {
+            Contract contract = db.Contracts.Find(id);
+            
             return View();
         }
 
